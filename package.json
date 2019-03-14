@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-serve",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.js",
   "description": "A VuePress plugin that serves generated files.",
   "author": "Shigma <1700011071@pku.edu.cn>",
@@ -12,17 +12,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Shigma/vuepress-plugin-serve.git"
+    "url": "https://github.com/vuepress-contrib/vuepress-plugin-serve.git"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.44",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.44",
     "vuepress": "^1.0.0-alpha.44",
-    "vuepress-plugin-serve": "^1.0.1"
+    "vuepress-theme-contrib": "^1.0.0-alpha.0"
   },
   "dependencies": {
     "chalk": "^2.4.2",
     "express": "^4.16.4",
     "opn": "^5.4.0"
-  }
+  },
+  "keywords": [
+    "vuepress",
+    "vuepress-plugin",
+    "server",
+    "static",
+    "build"
+  ]
 }

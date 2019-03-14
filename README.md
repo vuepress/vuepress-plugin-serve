@@ -1,6 +1,6 @@
-# [vuepress-plugin-serve](https://shigma.github.io/vuepress-plugin-serve/)
+# [vuepress-plugin-serve](https://vuepress-contrib.github.io/vuepress-plugin-serve/)
 
-[![Build Status](https://travis-ci.org/Shigma/vuepress-plugin-serve.svg?branch=master)](https://travis-ci.org/Shigma/vuepress-plugin-serve)
+[![Build Status](https://travis-ci.org/vuepress-contrib/vuepress-plugin-serve.svg?branch=master)](https://travis-ci.org/vuepress-contrib/vuepress-plugin-serve)
 [![npm](https://img.shields.io/npm/v/vuepress-plugin-serve.svg)](https://www.npmjs.com/package/vuepress-plugin-serve)
 
 A [VuePress](https://vuepress.vuejs.org/) plugin that serves generated files.

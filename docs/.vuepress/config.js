@@ -1,28 +1,5 @@
 const name = 'vuepress-plugin-serve'
 
-const getEcosystem = (locale, ecosystem, plugins, themes, others) => ({
-  text: ecosystem,
-  items: [{
-    text: plugins,
-    items: [{
-      text: 'vuepress-plugin-mathjax',
-      link: `https://Shigma.github.io/vuepress-plugin-mathjax/${locale}`,
-    }, {
-      text: 'vuepress-plugin-migrate',
-      link: `https://Shigma.github.io/vuepress-plugin-migrate/${locale}`,
-    }, {
-      text: 'vuepress-plugin-pangu',
-      link: 'https://Shigma.github.io/markdown-it-pangu/',
-    }]
-  }, {
-    text: others,
-    items: [{
-      text: 'vuepress-mergeable',
-      link: `https://Shigma.github.io/vuepress-mergeable/${locale}`,
-    }]
-  }],
-})
-
 const guideSidebar = () => [
   '',
   'config.html',
@@ -31,14 +8,10 @@ const guideSidebar = () => [
 module.exports = ({ isProd }) => ({
   base: `/${name}/`,
 
-  plugins: [
-    '@vuepress/medium-zoom',
-    '@vuepress/back-to-top',
-    'serve',
-  ],
+  theme: 'contrib',
   
   locales: {
-    '/': {
+    '/en/': {
       lang: 'en-US',
       title: name,
       description: 'A VuePress plugin which serves generated files',
@@ -51,20 +24,20 @@ module.exports = ({ isProd }) => ({
   },
   
   themeConfig: {
-    repo: `Shigma/${name}`,
-    editLinks: true,
-    docsDir: 'docs',
     locales: {
-      '/': {
+      '/en/': {
         label: 'English',
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
-        nav: [
-          getEcosystem('', 'Ecosystem', 'Plugins', 'Themes', 'Others')
-        ],
+        contrib: {
+          ecosystem: 'Ecosystem',
+          plugins: 'Plugins',
+          themes: 'Themes',
+          others: 'Others',
+        },
         sidebar: {
-          '/': guideSidebar(),
+          '/en/': guideSidebar(),
         },
       },
       '/zh/': {
@@ -72,9 +45,12 @@ module.exports = ({ isProd }) => ({
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
-        nav: [
-          getEcosystem('zh/', '生态系统', '插件', '主题', '其他')
-        ],
+        contrib: {
+          ecosystem: '生态系统',
+          plugins: '插件',
+          themes: '主题',
+          others: '其他',
+        },
         sidebar: {
           '/zh/': guideSidebar(),
         },
