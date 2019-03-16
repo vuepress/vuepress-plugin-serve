@@ -21,6 +21,13 @@ vuepress-plugin-serve 会增加一个 vuepress 命令，这个选项可用于自
 
 指定服务器监听的端口。
 
+## notFoundPath
+
+- **类型:** `string`
+- **默认值:** `'404.html'`
+
+用来存放 404 页面的地址。
+
 ## staticOptions
 
 - **类型:** `object`

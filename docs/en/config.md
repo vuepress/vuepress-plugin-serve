@@ -21,6 +21,13 @@ Specify the host to use for the server.
 
 Specify the port to use for the server.
 
+## notFoundPath
+
+- **type:** `string`
+- **default:** `'404.html'`
+
+Path for "404 not found" page.
+
 ## staticOptions
 
 - **type:** `object`

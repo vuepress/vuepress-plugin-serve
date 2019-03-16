@@ -1,12 +1,13 @@
+const { existsSync } = require('fs')
+const { resolve } = require('path')
 const express = require('express')
 const chalk = require('chalk')
-const path = require('path')
 const opn = require('opn')
-const fs = require('fs')
 
 module.exports = (options, context) => ({
   extendCli(cli) {
-    const _404Path = path.resolve(context.outDir, '404.html')
+    let { notFoundPath = '404.html' } = options
+    notFoundPath = resolve(context.outDir, notFoundPath)
 
     cli
       .command(options.commandName || 'serve', 'serve generated files')
@@ -17,12 +18,12 @@ module.exports = (options, context) => ({
       .allowUnknownOptions()
       .action(async (cliOptions) => {
         // build project first if there is no 404.html
-        let has404 = fs.existsSync(_404Path)
+        let has404 = existsSync(notFoundPath)
 
         // build project first if specified
         if (cliOptions.build || !has404) {
           await context.build()
-          has404 = fs.existsSync(_404Path)
+          has404 = existsSync(notFoundPath)
         }
 
         if (!has404) {
@@ -43,7 +44,7 @@ module.exports = (options, context) => ({
         // fallback to base url
         app.get(/.*/, (req, res, next) => {
           if (req.path.startsWith(context.base)) {
-            res.sendFile(_404Path)
+            res.sendFile(notFoundPath)
           } else {
             res.redirect(context.base)
           }
