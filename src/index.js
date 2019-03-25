@@ -13,6 +13,9 @@ module.exports = (options, context) => ({
       .command(options.commandName || 'serve', 'serve generated files')
       .option('-b, --build', 'build project before serving')
       .option('-p, --port <port>', 'use specified port (default: 8080)')
+      .option('-c, --cache [cache]', 'set the directory of cache')
+      .option('--dest <dest>', 'the output directory for build process')
+      .option('--no-cache', 'clean the cache before build')
       .option('--host <host>', 'use specified host (default: 0.0.0.0)')
       .option('--open', 'open browser when ready')
       .allowUnknownOptions()
@@ -26,6 +29,7 @@ module.exports = (options, context) => ({
           has404 = existsSync(notFoundPath)
         }
 
+        // ensure that a 404 file exists
         if (!has404) {
           throw new Error('No 404.html was found.')
         }
