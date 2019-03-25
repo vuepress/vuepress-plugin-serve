@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const opn = require('opn')
 
 module.exports = (options, context) => ({
-  extendCli(cli) {
+  extendCli (cli) {
     let { notFoundPath = '404.html' } = options
     notFoundPath = resolve(context.outDir, notFoundPath)
 
