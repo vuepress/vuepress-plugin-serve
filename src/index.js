@@ -4,7 +4,11 @@ const express = require('express')
 const chalk = require('chalk')
 const opn = require('opn')
 
+const name = 'vuepress-plugin-serve'
+
 module.exports = (options, context) => ({
+  name,
+
   extendCli (cli) {
     let { notFoundPath = '404.html' } = options
     notFoundPath = resolve(context.outDir, notFoundPath)
@@ -20,6 +24,18 @@ module.exports = (options, context) => ({
       .option('--open', 'open browser when ready')
       .allowUnknownOptions()
       .action(async (cliOptions) => {
+        const {
+          chainWebpack,
+          define,
+          alias,
+        } = options
+
+        // register special webpack options
+        context.pluginAPI
+          .registerOption('CHAIN_WEBPACK', chainWebpack, name)
+          .registerOption('DEFINE', define, name)
+          .registerOption('ALIAS', alias, name)
+
         // build project first if there is no 404.html
         let has404 = existsSync(notFoundPath)
 
@@ -56,16 +72,19 @@ module.exports = (options, context) => ({
 
         // create server
         const server = app.listen(port, host, async () => {
+          // apply afterServer hook
           if (typeof options.afterServer === 'function') {
             await options.afterServer(app, server)
           }
 
           const url = `http://${host}:${port}${context.base}`
-          console.log(`Server listening at ${chalk.blue(url)}`)
+          console.log(`VuePress server listening at ${chalk.blue(url)}`)
 
+          // open browser when ready
           if (cliOptions.open) opn(url)
         })
 
+        // apply beforeServer hook
         if (typeof options.beforeServer === 'function') {
           options.beforeServer(app, server)
         }
