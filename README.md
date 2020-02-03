@@ -1,5 +1,7 @@
 # [vuepress-plugin-serve](https://vuepress.github.io/plugins/serve.html)
 
+> Migrated to [vuepress-community](https://github.com/vuepress/vuepress-community)
+
 [![npm](https://img.shields.io/npm/v/vuepress-plugin-serve.svg)](https://www.npmjs.com/package/vuepress-plugin-serve)
 
 A [VuePress](https://vuepress.vuejs.org/) plugin that serves generated files.
